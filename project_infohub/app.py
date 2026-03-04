@@ -12,7 +12,7 @@ from langchain_core.documents import Document
 # --- კონფიგურაცია ---
 st.set_page_config(page_title="RS.GE InfoHub Agent", page_icon="🇬🇪")
 
-raw_key = os.getenv("GROQ_API_KEY", "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")
+raw_key = os.getenv("GROQ_API_KEY")
 clean_key = "".join(char for char in raw_key if ord(char) < 128).strip()
 
 PERSIST_DIRECTORY = "./infohub_vector_db"
@@ -306,4 +306,5 @@ if prompt := st.chat_input("დასვით კითხვა (მაგ: �
                 response = f"⚠️ API შეცდომა (სცადეთ მოგვიანებით): {str(e)}"
 
             st.markdown(response)
+
             st.session_state.messages.append({"role": "assistant", "content": response})
